@@ -11,7 +11,7 @@ import SwiftUI
 struct MotionSensorsApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MotionView()
         }
     }
 }
