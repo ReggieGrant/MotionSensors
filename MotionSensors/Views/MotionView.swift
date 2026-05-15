@@ -11,11 +11,13 @@ struct MotionView: View {
     @StateObject var viewModel:MotionViewModel = MotionViewModel()
     
     var body: some View {
+        let levelStatus = viewModel.almostLeved()
+        
         VStack(spacing: 12) {
             Text("The Motion Lab")
                 .font(.title)
                 .bold()
-            Text(viewModel.almostLeved())
+            Text(levelStatus)
                 .font(.headline)
             
             VStack(alignment: .leading, spacing: 8) {
@@ -46,13 +48,12 @@ struct MotionView: View {
             .buttonStyle(.borderedProminent)
         }
         .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(levelStatus == "Phone is leveled" ? Color.green : Color.clear)
         .onDisappear {
             viewModel.stop()
         }
     }
-    
-    // Homework
-    // If text is "Phone leveled" change background color to green
 }
 
 #Preview{
